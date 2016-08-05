@@ -9,11 +9,10 @@ def home(request):
     post_list = Article.objects.all()
     return render(request, 'home.html', {'post_list': post_list})
 
-def detail(request, my_args):
-    article = Article.objects.all()[int(my_args)]
-    str = ('title = %s,content = %s,create_time = %s'%(article.title,article.content,article.create_time))
+def detail(request,id):
+    article = Article.objects.all()[int(id)]
+    return render(request, 'articleDetail.html', {'post': article})
 
-    return HttpResponse(str)
 
 def test(request):
     return render(request,'test.html',{'current_time':datetime.now()})

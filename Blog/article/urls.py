@@ -4,7 +4,7 @@ from  article import views
 
 urlpatterns = [
     url(r'^$', views.home),
-    url(r'^detail/(?P<my_args>\d+)/$',views.detail),
+    url(r'^detail/(?P<id>\d+)/$',views.detail,name='detail'),
     url(r'^test/$',views.test),
     url(r'^home/$',views.home)
 ]
