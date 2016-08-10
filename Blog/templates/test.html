@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        body{
-            background:red;
-        }
-        em{
-            color: lightgray;
-        }
+
     </style>
 </head>
 <body>
     <h1>
         你好啊!
-    </h1>
-    <strong>{{ current_time }}</strong>
+    </h1 >
+    <form method="post" class="pure-form" >
+
+
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="提交">
+    </form>
+
 </body>
 </html>
