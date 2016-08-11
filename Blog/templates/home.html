@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="posts">
+    {% load paginate_tags %}
+    {% paginate post_list 2 %}
     {% for post in post_list %}
         <section class="post">
             <header class="post-header">
@@ -19,5 +22,6 @@
                 </div>
         </section>
     {% endfor %}
+{% include 'pagination.html' %}
 </div><!-- /.blog-post -->
 {% endblock %}

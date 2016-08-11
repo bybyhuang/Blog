@@ -28,6 +28,33 @@
                 </ul>
             </nav>
         </div>
+        <div >
+             <style scoped>
+                .button-secondary {
+                    color: white;
+                    border-radius: 2px;
+                    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+                }
+
+
+                .button-secondary {
+                    background: rgb(66, 184, 221); /* this is a light blue */
+                    margin-bottom: 20px;
+                }
+            </style>
+
+            <ul>
+                {% for category in category_list %}
+
+                <li><a class="pure-button button-secondary " href={% url 'article:categoryList' category.id%}>{{ category.name }}</a></li>
+
+                {% endfor %}
+            </ul>
+
+        </div>
+
+
+
     </div>
 
     <div class="content pure-u-1 pure-u-md-4-5">
