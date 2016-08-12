@@ -2,11 +2,14 @@ from django.shortcuts import render
 from article.models import Article,Category
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
 # Create your views here.
 
 from django.http import  HttpResponse
 from tools.forms import Addform
+
+
 
 
 #通过视图返回
@@ -16,7 +19,21 @@ class HomeView(ListView):
 
     def get_queryset(self):
         post_list = Article.objects.all()
-        return post_list
+        paginator = Paginator(post_list, 2)  # Show 25 contacts per page
+
+        page = self.request.GET.get('page')
+        try:
+            contacts = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contacts = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contacts = paginator.page(paginator.num_pages)
+
+        return contacts
+
+
 
     #把分类的信息传到前面去
     def get_context_data(self, **kwargs):
