@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block main %}
+    {% for post in post_list  %}
+        <article class="post post-{{ post.pk }}">
+            <header class="entry-header">
+                <h1 class="entry-title">
+                    <!-- 添加点击标题的超链接-->
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+
+                </h1>
+                <div class="entry-meta">
+                    <span class="post-category">
+                        <a href="#"><span>{{ post.category.name}}</span></a>
+                    </span>
+                    <span class="post-date">
+                        <a href="#">{{ post.modified_time}}</a>
+                    </span>
+                    <span class="post-author">{{ post.user }}</span>
+                </div>
+                <div class="entry-content clearfix">
+                           <a href="#"><p>{{ post.excerpt }}</p></a>
+                </div>
+            </header>
+        </article>
+
+    {% endfor %}
+{% endblock main%}
