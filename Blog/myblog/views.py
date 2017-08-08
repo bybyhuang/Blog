@@ -19,12 +19,12 @@ def detail(request,pk):
     post = get_object_or_404(Post, pk=pk)
     print(post)
     # 把postdata解析成markdown
-    post.body = markdown.markdown(text=post.body,extension=[
+    post.body = markdown.markdown(text=post.body,extensions=[
                                      'markdown.extensions.extra',
                                      'markdown.extensions.codehilite',
                                      'markdown.extensions.toc',
                                   ])
-    123123123123
+
     return render(request,'blog/detail.html',context={
         'post':post
     })
